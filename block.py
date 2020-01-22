@@ -1,5 +1,5 @@
 import copy
-class block:
+class Block:
     def __init__(self, block_type):
         self.shapes = [[], [], # empty block and wall
                   [[0, -1], [0, 0], [0, 1], [0, 2]], # I block
@@ -17,3 +17,11 @@ class block:
     
     def constant_drop(self):
         self.row += 1
+    
+    def is_bottom(self, board):
+        for row, col in self.shape:
+            row += self.row
+            col += self.col
+            if board[row + 1][col] != 0:
+                return True
+        return False

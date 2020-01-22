@@ -17,10 +17,16 @@ def main():
     while(True):
         pygame.time.wait(300)
         screen.fill(BACK_COLOR)
-        
-        draw_item.draw_board(screen,game.board)
+
         game.block.constant_drop()
+        is_bottom = game.block.is_bottom(game.board)
+        if is_bottom:
+            game.set_block_to_board()
+            game.set_newblock()
+
+        draw_item.draw_board(screen,game.board)
         draw_item.draw_moving_block(screen,game.block)
+        
         pygame.display.update()
 
         
