@@ -1,3 +1,4 @@
+import copy
 class block:
     def __init__(self, block_type):
         self.shapes = [[], [], # empty block and wall

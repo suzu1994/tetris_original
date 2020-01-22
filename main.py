@@ -19,6 +19,8 @@ def main():
         screen.fill(BACK_COLOR)
         
         draw_item.draw_board(screen,game.board)
+        game.block.constant_drop()
+        draw_item.draw_moving_block(screen,game.block)
         pygame.display.update()
 
         

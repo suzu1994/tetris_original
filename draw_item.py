@@ -18,7 +18,7 @@ class DrawItem:
         for row ,col in block.shape:
             row += block.row
             col += block.col
-            pygame.draw.rect(screnn,self.block_colors[block.type],Rect(31+35*col, 31+35*row, 34, 34))
+            pygame.draw.rect(screen,self.block_colors[block.type],Rect(31+35*col, 31+35*row, 34, 34))
 
 
         
