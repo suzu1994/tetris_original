@@ -15,7 +15,7 @@ def main():
     draw_item = DrawItem()
 
     while(True):
-        pygame.time.wait(300)
+        pygame.time.wait(100)
         screen.fill(BACK_COLOR)
 
         game.block.constant_drop()
@@ -36,6 +36,20 @@ def main():
             if event.type == QUIT:
                 pygame.quit()
                 sys.exit()
+            
+            if event.type == KEYDOWN:
+                # block rotetion
+                if event.key == K_SPACE: # anti-clockwise
+                    game.block.rotate(game.board, 1)                    
+                if event.key == K_RETURN: # clockwise
+                    game.block.rotate(game.board, 0)
+                # block movement
+                if event.key == K_DOWN:
+                    game.block.move(game.board, 0)
+                if event.key == K_LEFT:
+                    game.block.move(game.board, 1)
+                if event.key == K_RIGHT:
+                    game.block.move(game.board, 2)
 
 if __name__ == "__main__":
     main()

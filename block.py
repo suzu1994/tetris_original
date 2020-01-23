@@ -25,3 +25,23 @@ class Block:
             if board[row + 1][col] != 0:
                 return True
         return False
+
+    def move(self,board,move_type):
+        if self.can_move(board,[-1,0]) and move_type == 0:
+            self.row += 1
+
+        if self.can_move(board,[0,-1]) and move_type == 1:
+            self.col -= 1
+        
+        if self.can_move(board,[0,1]) and move_type == 2:
+            self.col += 1
+    def rotate(self,board,rotate_type):
+        pass
+
+    def can_move(self,board,direction):
+        for row,col in self.shape:
+            row += (self.row + direction[0])
+            col += (self.col + direction[1])
+            if board[row][col] != 0:
+                return False 
+        return True
