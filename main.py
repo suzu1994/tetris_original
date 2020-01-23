@@ -15,14 +15,14 @@ def main():
     draw_item = DrawItem()
 
     while(True):
-        pygame.time.wait(100)
+        pygame.time.wait(150)
         screen.fill(BACK_COLOR)
 
         game.block.constant_drop()
         draw_item.draw_board(screen,game.board)
         draw_item.draw_moving_block(screen,game.block)
         pygame.display.update()
-        
+
         is_bottom = game.block.is_bottom(game.board)
         if is_bottom:
             game.set_block_to_board()
