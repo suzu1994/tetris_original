@@ -19,15 +19,22 @@ def main():
         screen.fill(BACK_COLOR)
 
         game.block.constant_drop()
+        draw_item.draw_board(screen,game.board)
+        draw_item.draw_moving_block(screen,game.block)
+        pygame.display.update()
+        
         is_bottom = game.block.is_bottom(game.board)
         if is_bottom:
             game.set_block_to_board()
+            game.delete_row()
+            is_gameover = game.is_gameover()
+            if is_gameover:
+                game.initialize()
+
             game.set_newblock()
 
-        draw_item.draw_board(screen,game.board)
-        draw_item.draw_moving_block(screen,game.block)
         
-        pygame.display.update()
+        
 
         
         #あとで抽出する

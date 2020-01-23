@@ -35,8 +35,26 @@ class Block:
         
         if self.can_move(board,[0,1]) and move_type == 2:
             self.col += 1
-    def rotate(self,board,rotate_type):
-        pass
+    def rotate(self,board,direction):
+        # long bar rotates differently
+        if self.type == 2:
+            if direction == 0:
+                for dx in self.shape:
+                    dx[0], dx[1] = dx[1], 1-dx[0]
+            elif direction == 1:
+                for dx in self.shape:
+                    dx[0], dx[1] = 1-dx[1], dx[0]
+        # square doesn`t rotate
+        elif self.type == 8:
+            pass
+        
+        # other blocks
+        elif direction == 0:
+            for dx in self.shape:
+                dx[0], dx[1] = dx[1], -dx[0]
+        elif direction == 1:
+            for dx in self.shape:
+                dx[0], dx[1] = -dx[1], dx[0]
 
     def can_move(self,board,direction):
         for row,col in self.shape:
